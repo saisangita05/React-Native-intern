@@ -1,20 +1,13 @@
-// App.js
-import React from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
-import { PrimaryButton, SuccessButton, DangerButton, InfoButton, WarningButton } from './SpecificButtons';
+/*import React from 'react';
+import { View, StyleSheet } from 'react-native';
+//import Signup from './screen/signup';
+//import Login from './screen/login';
+import GetStarted from './screen/welcome';
 
-const App = () => {
-  const handleButtonPress = (type) => {
-    Alert.alert(`${type} Button Pressed!`);
-  };
-
+/*const App = () => {
   return (
     <View style={styles.container}>
-      <PrimaryButton title="Primary" onPress={() => handleButtonPress('Primary')} />
-      <SuccessButton title="Success" onPress={() => handleButtonPress('Success')} />
-      <DangerButton title="Danger" onPress={() => handleButtonPress('Danger')} />
-      <InfoButton title="Info" onPress={() => handleButtonPress('Info')} />
-      <WarningButton title="Warning" onPress={() => handleButtonPress('Warning')} />
+      <Login /> 
     </View>
   );
 };
@@ -22,10 +15,63 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
-export default App;
+export default App;*/
+
+
+/*export default function App() {
+  return (
+    <View style={styles.container}>
+      <Signup />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+*/
+
+
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('GetStarted');
+
+  const handleGetStarted = () => {
+    setCurrentPage('Home');
+  };
+
+  return (
+    <View style={styles.container}>
+      {currentPage === 'GetStarted' ? (
+        <GetStarted onGetStarted={handleGetStarted} />
+      ) : (
+        <View style={styles.homeContainer}>
+          <Text style={styles.homeText}>Home Page</Text>
+        </View>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  homeContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  homeText: {
+    fontSize: 24,
+    color: '#333',
+  },
+});
 
