@@ -1,7 +1,7 @@
 # mystar
  
 ASSIGNMENT 1-2 AND 3 
-Get started page,login oage,sign up page
+Get started page,login page,sign up page
 
 
 GET STARTED PAGE :
