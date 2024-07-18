@@ -1,4 +1,4 @@
-# mystar
+# FoodBeat
  
 ASSIGNMENT 1-2 AND 3 
 Get started page,login page,sign up page
