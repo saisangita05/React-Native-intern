@@ -1,77 +1,33 @@
-/*import React from 'react';
-import { View, StyleSheet } from 'react-native';
-//import Signup from './screen/signup';
-//import Login from './screen/login';
-import GetStarted from './screen/welcome';
+import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import Login from "./screen/Login";
+import SignUp from "./screen/SignUp";
+import Home from "./screen/Home";
 
-/*const App = () => {
-  return (
-    <View style={styles.container}>
-      <Login /> 
-    </View>
-  );
-};
+const App = () => {
+  const [currentView, setCurrentView] = useState("home");
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;*/
-
-
-/*export default function App() {
-  return (
-    <View style={styles.container}>
-      <Signup />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-*/
-
-
-
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('GetStarted');
-
-  const handleGetStarted = () => {
-    setCurrentPage('Home');
+  const renderComponent = () => {
+    switch (currentView) {
+      case "login":
+        return <Login onSignupPress={() => setCurrentView("signup")} />;
+      case "signup":
+        return <SignUp onLoginPress={() => setCurrentView("login")} />;
+      default:
+        return <Home onLoginPress={() => setCurrentView("login")} />;
+    }
   };
 
-  return (
-    <View style={styles.container}>
-      {currentPage === 'GetStarted' ? (
-        <GetStarted onGetStarted={handleGetStarted} />
-      ) : (
-        <View style={styles.homeContainer}>
-          <Text style={styles.homeText}>Home Page</Text>
-        </View>
-      )}
-    </View>
-  );
-}
+  return <View style={styles.container}>{renderComponent()}</View>;
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  homeContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  homeText: {
-    fontSize: 24,
-    color: '#333',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
-
